@@ -1,73 +1,793 @@
 \documentclass{ctexart}
-\input{math.code.tex}
-\everymath{\displaystyle}
-\newcount\test
+\input math.code.tex
+\setdate{2020-09-19}
 
 \begin{document}
-\mytoc
-\tableofcontents
-\clearpage
 
-\begin{ques}[date=2020-8-20]
-  极限$\lim_{n \to \infty} \left( \frac{n+1}{n-2} \right) ^n=$\blank.
-\begin{solution}
+\begin{mathques}{2020-09-05}{极限}
+\begin{ques}
+  极限$\lim_{n \to \infty} \left( \frac{n+1}{n-2} \right) ^n=$\mathblank.
+\end{ques}
+\begin{solu}
   \begin{align*}
     \lim_{n \to \infty} \left( \frac{n+1}{n-2} \right) ^n
     &= \lim_{n \to \infty} \frac{\left( 1 + \frac{1}{n} \right) ^n}{\left( 1 -
     \frac{2}{n} \right) ^n}\\
-    & \hint{\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right) ^n = e}
+    & \mathhint{\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right) ^n = e}
     \\
     & = \frac{\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right) ^n}{\lim_{n
     \to \infty} \left( 1 - \frac{2}{n} \right) ^n}\\
     & = \frac{e}{e^{-2}} = e^3
   \end{align*}
-\end{solution}
-\end{ques}
+\end{solu}
+\end{mathques}
 
-\begin{ques}[date=2020-8-20]
+\begin{mathques}{2020-09-05}{极限}
+\begin{ques}
   求极限$\lim_{n \to \infty} (\sqrt{n + \sqrt{n}} - \sqrt{n - \sqrt{n}})$.
-\begin{solution}
+\end{ques}
+\begin{solu}
   \begin{align*}
     \lim_{n \to \infty} (\sqrt{n + \sqrt{n}} - \sqrt{n - \sqrt{n}})
     &= \lim_{n \to \infty} \frac{(n + \sqrt{n}) - (n - \sqrt{n})}{(n +
     \sqrt{n}) + (n - \sqrt{n})}\\
     &= \lim_{n \to \infty} \frac{2}{\sqrt{1 + \frac{1}{\sqrt{n}}} + \sqrt{1 -
     \frac{1}{\sqrt{n}}}}\\
-    &= \frac{2}{\error{\sqrt{1} + \sqrt{1}}} = 1
+    &= \frac{2}{\matherror{\sqrt{1} + \sqrt{1}}} = 1
   \end{align*}
-\end{solution}
-\end{ques}
+\end{solu}
+\end{mathques}
 
-\begin{ques}[date=2020-8-20]
+\begin{mathques}{2020-09-05}{极限}
+\begin{ques}
   设$x_{n + 1} = \sqrt{2 + x_n} (n = 1, 2, \dotsc), x_1 = \sqrt{2}$, 证明
   $\lim_{n \to \infty} x_n$ 存在, 并求$\lim_{n \to \infty} x_n$.
-  \begin{solution}
-    \idea{单调有界数列必有极限}
-    \begin{step}{证明单调性(3种方法)}
-      \begin{enumerate}
-        \item 令$f(x) = \sqrt{2 + x}$ 证明$f(x)$的单调性
-        \item 作差$x_{n} - x_{n - 1} = \sqrt{2 + x_{n - 1}} - x_{n - 1} = \frac{2
-          + x_{n - 1} - x_{n - 1}^2}{\sqrt{2 + x_{n - 1}} + x_{n - 1}}$\par
-          $2 + x_{n - 1} - x_{n - 1}^2 > 2 + x_{n - 1} - 2x_{n - 1} = 2 - x_{n
-          - 1} > 0$\par
-          \idea{方法2需要先进行Step 2证明上界为2才行}
-        \item 证明$x_{n + 1} - x_n$与$x_{n} - x_{n - 1}$同号\par
-          $x_{n + 1} - x_n = \sqrt{2 + x_n} - \sqrt{2 + x_{n - 1}} = \frac{x_n
-          - x_{n - 1}}{\sqrt{2 + x_n} + \sqrt{2 + x_{n - 1}}}$\par
-          又$x_2 - x_1 = \sqrt{2 + \sqrt{2}} - \sqrt{2} > 0$，故$x_n$单调
-      \end{enumerate}
-    \end{step}
-    \begin{step}{证明有界性}
-      \begin{ideabox}
-        \itshape 当界值难以看出来时，可以先假定有界，得出有极限然后求出根据递
-        推公式求出极限得出界值再反过来想怎么证明（见Step 3）
-      \end{ideabox}
-      $x_1 = \sqrt{2} < 2$, 设$x_k < 2$, 则$x_{k + 1} = \sqrt{2 + x_k} < 2$,
-      故$x_n < 2$有上界
-    \end{step}
-    \begin{step}{求极限}
-      $x_n > 0$, 设$\lim_{n \to \infty} x_n = A > 0$, 则$A = \sqrt{2 + A} \Rightarrow A = 2$
-    \end{step}
-  \end{solution}
 \end{ques}
+\begin{solu}
+  \mathidea{单调有界数列必有极限}
+  \begin{step}{证明单调性(3种方法)}
+    \begin{enumerate}
+      \item 令$f(x) = \sqrt{2 + x}$ 证明$f(x)$的单调性
+      \item 作差$x_{n} - x_{n - 1} = \sqrt{2 + x_{n - 1}} - x_{n - 1} = \frac{2
+        + x_{n - 1} - x_{n - 1}^2}{\sqrt{2 + x_{n - 1}} + x_{n - 1}}$\par
+        $2 + x_{n - 1} - x_{n - 1}^2 > 2 + x_{n - 1} - 2x_{n - 1} = 2 - x_{n
+        - 1} > 0$\par
+        \mathidea{方法2需要先进行Step 2证明上界为2才行}
+      \item 证明$x_{n + 1} - x_n$与$x_{n} - x_{n - 1}$同号\par
+        $x_{n + 1} - x_n = \sqrt{2 + x_n} - \sqrt{2 + x_{n - 1}} = \frac{x_n
+        - x_{n - 1}}{\sqrt{2 + x_n} + \sqrt{2 + x_{n - 1}}}$\par
+        又$x_2 - x_1 = \sqrt{2 + \sqrt{2}} - \sqrt{2} > 0$，故$x_n$单调
+    \end{enumerate}
+  \end{step}
+  \begin{step}{证明有界性}
+    \begin{mathideabox}
+      \itshape 当界值难以看出来时，可以先假定有界，得出有极限然后求出根据递
+      推公式求出极限得出界值再反过来想怎么证明（见Step 3）
+    \end{mathideabox}
+    $x_1 = \sqrt{2} < 2$, 设$x_k < 2$, 则$x_{k + 1} = \sqrt{2 + x_k} < 2$,
+    故$x_n < 2$有上界
+  \end{step}
+  \begin{step}{求极限}
+    $x_n > 0$, 设$\lim_{n \to \infty} x_n = A > 0$, 则$A = \sqrt{2 + A} \Rightarrow A = 2$
+  \end{step}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-08}{极限}
+\begin{ques}
+  求极限$\lim_{x \to 0^+} \frac{x^x - (\sin x)^x}{x^2 \ln (1 + x)}$.
+\end{ques}
+\begin{solu}
+\begin{align*}
+  \text{原式} & = -\matherror{\lim_{x \to 0^+} x^x} \lim_{x \to 0^+}
+  \frac{\left( \frac{\sin x}{x} \right) ^x - 1}{x^3}\\
+  &\mathhint{e^x - 1 \sim x (x \to 0)}\\
+  &= -\lim_{x \to 0^+} \frac{\ln \frac{\sin x}{x}}{x^2}\\
+  &= -\lim_{x \to 0^+} \frac{\ln \left( 1 + \frac{\sin x - x}{x} \right) }{x^2}
+  \\
+  &\mathhint{\ln (1+x) \sim x (x \to 0)}\\
+  &= -\lim_{x \to 0^+} \frac{\sin x - x}{x^3}\\
+  &= -\lim_{x \to 0^+} \frac{x - \frac{1}{3!} x^3 + o(x^3) - x}{x^3} = \frac{1}
+  {6}
+\end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-08}{极限}
+\begin{ques}
+  求极限$\lim_{x \to 0} \left( \frac{a_1^x + a_2^x + \dotsb + a_n^x}{n} \right)
+  ^{\frac{n}{x}}$，其中$a_i > 0, i = 1, 2, \dotsc, n$.
+\end{ques}
+\begin{solu}
+  因为$\lim _{x \to 0}a_i^x = 1$，所以原极限是“$1^{\infty}$”型未定式
+  \mathmethod 使用\emph{洛必达法则}求极限
+  \begin{align*}
+    \lim_{x \to 0} \left( \frac{a_1^x + a_2^x + \dotsb + a_n^x}{n} \right)
+    ^{\frac{n}{x}} &= \exp \left\{ \lim_{x \to 0}\frac{n}{x} \ln \left(
+    \frac{a_1^x + a_2^x + \dotsb + a_n^x}{n} \right)  \right\}\\
+    &\mathhint{\text{洛必达}\frac{0}{0}}\\
+    &= \exp \left\{ \lim_{x \to 0} n \cdot \frac{a_1^x \ln a_1 + a_2^x \ln a_2
+    + \dotsb + a_n^x \ln a_n}{a_1^x + a_2^x + \dotsb + a_n^x} \right\} \\
+    &=a_1a_2\dotsi a_n
+  \end{align*}
+  \mathmethod 凑成第二个重要极限（“$1^{\infty}$”型未定式极限都可以凑成第二个重
+  要极限
+  \begin{align*}
+    \lim_{x \to 0} \left( \frac{a_1^x + a_2^x + \dotsb + a_n^x}{n} \right)
+    ^{\frac{n}{x}} &=
+    \lim_{x \to 0} \left( 1 + \frac{a_1^x + a_2^x + \dotsb + a_n^x - n}{n}
+    \right) ^{\frac{n}{a_1^x + a_2^x + \dotsb + a_n^x - n}
+    \cdot \frac{a_1^x + a_2^x + \dotsb + a_n^x - n}{x}}
+  \end{align*}
+  其中
+  \begin{align*}
+    \lim_{x \to 0} \frac{a_1^x + a_2^x + \dotsb + a_n^x - n}{x}
+    &= \ln (a_1a_2\dotsi a_n)\\
+    \mathhint{\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right) ^n = e}\\
+    \lim_{x \to 0} \left( 1 + \frac{a_1^x + a_2^x + \dotsb + a_n^x - n}{n}
+    \right) ^{\frac{n}{a_1^x + a_2^x + \dotsb + a_n^x - n}} &=e
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-08}{极限}
+\begin{ques}
+  设函数$f(x) = \lim_{n \to \infty} \frac{1 + x}{1 + x^{2n}}$，讨论函数的间断
+  点，其结论为(\quad).
+  \begin{multichoice}
+    \task 不存在间断点
+    \task \answer{存在间断点$x = 1$}
+    \task 存在间断点$x = 0$
+    \task 存在间断点$x = -1$
+  \end{multichoice}
+\end{ques}
+\begin{solu}
+\begin{mathideabox}
+  函数$f(x)$以$x$为自变量，但是在对$n$求极限的时候，$x$被看做常数，因此应根据
+  $x$的不同取值求出对应的极限
+\end{mathideabox}
+当$|x| < 1$时, $\lim_{n \to \infty} x^{2n} = 0$，所以$f(x) = 1 + x$
+
+当$|x| > 1$时，$\lim_{n \to \infty} \frac{1 + x}{1 + x^{2n}} = 0$
+
+又$f(1) = 1, f(-1) = 0$，则
+\[
+  f(x) = \lim_{n \to \infty} \frac{1 + x}{1 + x^{2n}} =
+  \begin{dcases}
+    0,     & x \le -1 \\
+    1 + x, & -1 <x < 1 \\
+    1,     & x = 1 \\
+    0,     & x > 1 \\
+  \end{dcases}
+\]
+故$x = 1$为间断点
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-09}{极限}
+\begin{ques}
+  设$f(\sin^2x) = \frac{x}{\sin x}$，则$f(x) = $\mathblank.
+\end{ques}
+\begin{solu}
+  \answer{
+    $\frac{\arcsin \sqrt{x}}{\sqrt{x}} \matherror{(x > 0)}$
+  }\par
+  设$u = \sin^2 x$，则$\sin x = \pm \sqrt{u}$.
+
+  当$\sin x = \sqrt{u}$时，$x = \arcsin \sqrt{u}$
+
+  当$\sin x = - \sqrt{u}$时，$\matherror{\sin(-x) = \sqrt{u}, x = -\arcsin
+  \sqrt{u}}$.因此
+  \begin{align*}
+    f(u) &= \frac{\arcsin \sqrt{u}}{\sqrt{u}} \\
+    f(x) &= \frac{\arcsin \sqrt{x}}{\sqrt{x}} (x > 0)
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-07}{极限}
+\begin{ques}
+  设$f\left(x + \frac{1}{x}\right) = \frac{x + x^3}{1 + x^4}$，则$f(x) =
+  $\mathblank
+\end{ques}
+\begin{solu}
+  \answer{$\frac{x}{x^2 - 2}$}
+
+  \[
+    f\left(\matherror{ x + \frac{1}{x}}\right) = \frac{x + x^3}{1 + x^4} =
+    \frac{x^2 \left( \matherror{\textstyle\frac{1}{x} + x} \right) }{x^2
+    \left( \frac{1}{x^2} + x^2 \right) } = \frac{\frac{1}{x} + x}{\left(
+  \matherror{\textstyle\frac{1}{x} + x} \right) ^2 - 2}
+  \]
+  因此$f(x) = \frac{x}{x^2 - 2}$
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-09}{极限}
+\begin{ques}
+  求极限$\lim_{x \to 0^+} \frac{2e^{\frac{1}{x}} + e^{-\frac{1}{x}}}
+  {e^{\frac{2}{x}} - e^{- \frac{1}{x}}}$.
+\end{ques}
+\begin{solu}
+  \begin{align*}
+    \lim_{x \to 0^+} \frac{2e^{\frac{1}{x}} + e^{-\frac{1}{x}}} {e^{\frac{2}
+    {x}} - e^{- \frac{1}{x}}}
+    &= \lim_{t \to +\infty} \frac{2e^t + e^{-t}}{e^{2t} - e^{-t}}
+    \mathhint[r]{\text{令}t = \frac{1}{x}}\\
+    &= \lim_{t \to +\infty} \frac{2 + e^{-2t}}{e^t - e^{-2t}}
+    \mathhint[r]{\text{同除}e^t}\\
+    &= 0
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(3){2020-09-11}{极限}
+\begin{ques}
+  求极限$\lim_{x \to 0} \frac{\sin x + x^2 \sin \frac{1}{x}}{(2 + x^2) \ln(1 +
+  x)}$.
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}
+    所给极限为“$\frac{0}{0}$”型，先进行\emph{等价无穷小代换}，再拆分
+  \end{mathideabox}
+  \begin{align*}
+    \lim_{x \to 0} \frac{\sin x + x^2 \sin \frac{1}{x}}{(2 + x^2) \ln(1 + x)}
+    &= \lim_{x \to 0} \frac{1}{2 + x^2} \cdot \frac{\sin x + x^2 \sin \frac{1}
+    {x}}{x} \mathhint[r]{\text{等价无穷小代换}}\\
+    \mathhint[l]{\text{将非零因子}\frac{1}{2 + x^2}\text{单独求极限}}
+    &= \frac{1}{2} \lim_{x \to 0} \left( \frac{\sin x}{x} + x \sin \frac{1}{x}
+    \right) \\
+    &= \frac{1}{2}
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-11}{一元微分}
+\begin{ques}
+  设函数$f(x)$在$x = 0$处连续，且$\lim_{x \to 0} \frac{f(x^2)}{x^2} = 1$，则
+  (\quad)
+  \begin{multichoice}
+    \task $f(0) = 0$且$f'_-(0)$存在
+    \task $f(0) = 1$且$f'_-(0)$存在
+    \task \answer{$f(0) = 0$且$f'_+(0)$存在}
+    \task $f(0) = 1$且$f'_+(0)$存在
+  \end{multichoice}
+\end{ques}
+\begin{solu}
+  因为$f(x)$在$x = 0$处连续，且$\lim_{x \to 0} \frac{f(x^2)}{x^2} = 1$
+
+  所以$\lim_{x \to 0} f(x^2) = 0$，即$f(0) = 0$
+
+  从而有
+  \begin{align*}
+    \lim_{x \to 0} \frac{f(x^2)}{x^2}
+    &= \matherror{\lim_{x \to 0} \frac{f(x^2) - f(0)}{x^2 - 0}}\\
+    \mathhint[l]{t = x^2} &= \matherror{\lim_{t \to \color{red} 0^+}
+    \frac{f(t) - f(0)}{t - 0}}\\
+    &= f'_+(0)
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-11}{一元微分}
+\begin{ques}
+  设函数$f(x) = \abs{x^2 - 1}\varphi (x)$，其中$\varphi (x) $在$x = 1$处连续，
+  则$\varphi (1) = 0$是$f(x)$在$x = 1$处可导的(\quad)
+  \begin{multichoice}
+    \task \answer{充分必要条件}
+    \task 充分但非必要条件
+    \task 必要但非充分条件
+    \task 既非充分也非必要条件
+  \end{multichoice}
+\end{ques}
+\begin{solu}
+  \mathidea{$\varphi(1) = 0 \Longrightarrow f(x)$在$x = 1$处可导}\par
+  由$\varphi(1) = 0$可得$\mathhint{f(1) = 0}$
+  \begin{align*}
+    f'_+(1) &= \lim_{x \to 1^+} \frac{f(x) - f(1)}{x - 1}
+    = \lim_{x \to 1^+} \frac{\abs{x^3 - 1}\varphi(x)}{x - 1}
+    = \lim_{x \to 1^+} (x^2 + x + 1)\varphi(x) = 0\\
+    f'_-(1) &= \lim_{x \to 1^-} \frac{f(x) - f(1)}{x - 1}
+    = \lim_{x \to 1^-} \frac{\abs{x^3 - 1}\varphi(x)}{x - 1}
+    = \lim_{x \to 1^-} (x^2 + x + 1)\varphi(x) = 0
+  \end{align*}
+  即$f'_+(1) = f'_-(1) = 0$，则$f'(1) = 0$
+
+  \mathidea{$\varphi(1) = 0 \Longleftarrow f(x)$在$x = 1$处可导}\par
+  设$f(x)$在$x = 1$处可导，因为$f(1) = 0$，所以
+  \begin{align*}
+    f'_+(1) &= \lim_{x \to 1^+} \frac{f(x) - f(1)}{x - 1}
+    = \lim_{x \to 1^+} \frac{\abs{x^3 - 1}\varphi(x)}{x - 1}
+    = \lim_{x \to 1^+} (x^2 + x + 1)\varphi(x) = 3\varphi(1)\\
+    f'_-(1) &= \lim_{x \to 1^-} \frac{f(x) - f(1)}{x - 1}
+    = \lim_{x \to 1^-} \frac{\abs{x^3 - 1}\varphi(x)}{x - 1}
+    = \lim_{x \to 1^-} (x^2 + x + 1)\varphi(x) = -3\varphi(1)
+  \end{align*}
+  由$f'_+(1) = f'_-(1) = 0$得，$3\varphi(1) = -3\varphi(1)$，即$\varphi(1) = 0$
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-11}{一元微分}
+\begin{ques}
+  设函数$y = f(x)$由方程$y = x\ln y$所确定，求$\dv{y}{x}$.
+\end{ques}
+\begin{solu}
+\mathmethod 方程两边同时对$x$求导，得$y' = \ln y + x\cdot \frac{1}{y} \cdot
+y'$，解得$y' = \frac{y \ln y}{y - x}$.
+\mathmethod 令$F(x, y) = y - x\ln y$，则$F'_x = - \ln y, F'_y = 1 - \frac{x}{y}
+$，故$\dv{y}{x} = - \frac{F'_x}{F'_y} = \frac{y\ln y}{y - x}$.
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-13}{一元微分}
+\begin{ques}
+  已知$f'(x) = Ae^x$($A$为正常数)，求$f(x)$的反函数的二阶导数.
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}[反函数定理]
+    如果从$\mathbb{R}^n$的一个开集$\mathrm{U}$到$\mathbb{R}^n$的连续可微函数
+    $F$的全微分在点$p$可逆（$F$在点p的雅可比行列式不为零），则$F$在点$p$附近具
+    有反函数，且
+    \[
+      J_{F^{-1}}(F(p)) = [J_F(p)]^{-1}
+    \]
+    其中$[\cdot]^{-1}$表示逆矩阵，$J_G(q)$是函数$G$在点$q$的雅可比矩阵。
+
+    也可由链式法则推出：设$G,H$是两个函数，分别在$H(p)$和$p$处有全导数，则
+    \[
+      J_{G\circ H}(p) = J_G(H(p))\cdot J_H(p)
+    \]
+    设$G$为$F$，$H$为$F^{-1}$，$G\circ H$则为恒等函数，其雅可比矩阵也是单位矩
+    阵。
+
+    当$y$为$x$的一元函数时，其雅可比矩阵为$[\dd y / \dd x]$，即
+    \[
+      \dv{x}{y} = \frac{1}{\dv{y}{x}}
+    \]
+  \end{mathideabox}
+  设$y = f(x)$，则$\dv{x}{y} = \frac{1}{f'(x)}$
+  \begin{align*}
+    \dv[2]{y}{x} &= \dv{y}(\dv{x}{y})\\
+    &= \matherror{\dv{x}(\frac{1}{f'(x)}) \cdot \dv{x}{y}}\\
+    &= \matherror{-\frac{f''(x)}{\qty(f'(x))^2} \cdot \frac{1}{f'(x)}}\\
+    &= -\frac{f''(x)}{\qty(f'(x))^3} = - \frac{Ae^x}{(Ae^x)^3} = -\frac{1}
+    {A^2e^{2x}}
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-13}{一元微分}
+\begin{ques}
+  设可导函数$y = f(x)$有反函数$g(x)$，且$f(a) = 3, f'(a) = 1, f''(a) = 2$，求
+  $g''(3)$.
+\end{ques}
+\begin{solu}
+  \mathmethod
+  由链式求导法则得$\qty(g \circ f(x))' = g'\qty(f(x)) \cdot f'(x)$，即
+  \[
+    \matherror{f'(x) \cdot g'(f(x)) = 1}
+  \]
+  两边同时对$x$求导，有
+  \[
+    f''(x)g'(f(x)) + \qty(f'(x))^2 \cdot g''(f(x)) = 0
+  \]
+  两边同乘$f'(x)$
+  \[
+    f''(x) + \qty(f'(x))^3 \cdot g''(f(x)) = 0
+  \]
+  将$x = a$代入得
+  \[
+    f''(a) + \qty(f'(a))^3 \cdot g''(f(a)) = 0
+  \]
+  即
+  \[
+    2 + g''(3) = 0
+  \]
+  则$g''(3) = -2$
+  \mathmethod 公式法
+  \[
+    g''(3) = - \frac{f''(a)}{\qty(f(a))^3} = -2
+  \]
+  \begin{mathideabox}[公式推导过程]
+    已知
+    $\left\{\begin{aligned}
+      \eval{y}_{x = a} &= 3\\
+      \eval{\dv{y}{x}}_{x = a} &= 1\\
+      \eval{\dv[2]{y}{x}}_{x = a} &= 2
+    \end{aligned}\right.$
+    , 求$\eval{\dv[2]{x}{y}}_{y = 3}$
+
+    \begin{align*}
+      \dv[2]{x}{y} &= \dv{y}(\dv{x}{y}) = \dv{x}(\dv{x}{y}) \cdot \dv{x}{y} \\
+      &= \dv{x}(\frac{1}{\dv{y}{x}}) \cdot \frac{1}{\dv{y}{x}} \\
+      &= - \frac{\dv{x}(\dv{y}{x})}{\qty(\dv{y}{x})^2} \cdot \frac{1}{\dv{y}{x}}\\
+      &= - \frac{\dv[2]{y}{x}}{\qty(\dv{y}{x})^3}
+    \end{align*}
+    即$\eval{\dv[2]{x}{y}}_{y = 3} = \eval{- \frac{\dv[2]{y}{x}}{\qty(\dv{y}
+    {x})^3}}_{x = a}$
+  \end{mathideabox}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-13}{一元微分}
+\begin{ques}
+  设$f(x) =
+  \begin{dcases}
+    x^2 \sin \frac{\pi}{x}, & x < 0, \\
+    A, & x = 0, \\
+    ax^2 + b, & x > 0,\\
+  \end{dcases}
+  $求常数$A, a, b$的值，使$f(x)$在$x = 0$处可导，并求$f'(0)$.
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}[可导必然连续（反之不一定）]
+    设函数$y = f(x)$上一点$x_0$，函数在这一点可导，即$f'(x_0) = \lim_{\Delta x
+    \to 0} \frac{\Delta y}{\Delta x}存在$，其中
+    \[
+      \Delta y = f(x_0 + \Delta x) - f(x_0)
+    \]
+    则
+    \begin{align*}
+      \lim_{\Delta x \to 0} \Delta y &= \lim_{\Delta x \to 0} \qty(\frac{\Delta
+      y}{\Delta x}\cdot \Delta x)\\
+      &= f'(x_0) \cdot 0 = 0
+    \end{align*}
+    即函数$f(x)$在$x_0$处连续
+  \end{mathideabox}
+  \begin{mathideabox}[导数存在必然有左右导数相等]
+    由极限的性质可知：
+    \[
+      \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+      =\lim_{\Delta x \to 0^-} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+      =\lim_{\Delta x \to 0^+} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+    \]
+  \end{mathideabox}
+  可导必然连续，即
+  \[
+    \lim_{x \to 0^-} x^2 \frac{\pi}{x} = \lim_{x \to 0^+} (ax^2 + b) = A
+  \]
+  则$A = b = 0$.
+  又
+  \begin{align*}
+    f'_-(0) &= \lim_{x \to 0^-} \frac{x^2 \sin \frac{\pi}{x} - 0}{x - 0} = 0\\
+    f'_+(0) &= \lim_{x \to 0^+} \frac{ax^2 - 0}{x - 0} = 0
+  \end{align*}
+  所以，$a$可以为任意常数，且$f'(0) = 0$
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-11}{一元微分}
+\begin{ques}
+  设函数$y = f(x)$由$
+  \begin{dcases}
+    x = \ln(1 + t^2) + 1,\\
+    y = 2 \arctan t - (t + 1)^2,\\
+  \end{dcases}
+  $确定，求$\dv{y}{x}, \dv[2]{y}{x}$
+\end{ques}
+\begin{solu}
+  \begin{align*}
+    \dv{y}{t} &= \frac{2}{\matherror{1 + t^2}} - 2(t + 1)\\
+    \dv{x}{t} &= \frac{2t}{1 + t^2}
+  \end{align*}
+  由链式法则，$\dv{y}{t} = \dv{y}{x}\cdot\dv{x}{t}$，则
+  \begin{align*}
+    \dv{y}{x} &= \frac{\dv{y}{t}}{\dv{x}{t}}
+    = \frac{\frac{2}{1 + t^2} - 2(t + 1)}{\frac{2t}{1 + t^2}}
+    = -(t^2 + t + 1)\\
+    \dv[2]{y}{x} &= \dv{x}(\dv{y}{x})\\
+    &= \dv{x}(-(t^2 + t + 1))\\
+    &= \dv{t}(-(t^2 + t + 1)) \cdot \dv{t}{x}\\
+    &= -\frac{1 + 2t}{\dv{x}{t}}\\
+    &= -\frac{(1 + 2t)(1 + t^2)}{2t}
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}(2){2020-09-15}{一元微分}
+\begin{ques}
+  设$f(x)$满足$f(0) = 0$，且$f'(0)$存在，求$\lim_{x \to 0} \frac{f(1 -
+  \sqrt{\cos x})}{\ln(1 - x\sin x)}$
+\end{ques}
+\begin{solu}
+  \begin{align*}
+    \lim_{x \to 0} \frac{f(1 - \sqrt{\cos x})}{\ln(1 - x\sin x)}
+    &=\lim_{x \to 0} \frac{f(1 - \sqrt{\cos x}) - f(0)}{(1 - x\sin x) - 0}
+    \cdot \lim_{x \to 0} \frac{1 - \sqrt{\cos x}}{\ln(1 - x\sin x)}\\
+    &=f'(0) \lim_{x \to 0} \frac{1 - \sqrt{\cos x}}{\ln(1 - x\sin x)}\\
+    \mathidea{等价无穷小替换}&=f'(0)\lim_{x \to 0} \frac{1 - \cos x}{-x\sin x}
+    \cdot \frac{1}{1 + \sqrt{\cos x}}\\
+    &= -\frac{1}{2}f'(0)\lim_{x \to 0} \frac{1 - \cos x}{x^2}\\
+    &= -\frac{1}{4}f'(0).
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-12}{一元微分}
+\begin{ques}
+  设函数$f(x)$在$x = 0$处连续，且$\lim_{x \to 0} \frac{f(x)}{x}$存在，则(\quad)
+  \begin{multichoice}
+    \task $f(0) \neq 0$，但$f'(0)$可能不存在
+    \task $f(0) = 0$，但$f'(0)$可能不存在
+    \task \answer{$f'(0)$存在，但$f'(0)$不一定等于零}
+    \task $f'(0)$存在，且必定有$f'(0) = 0$
+  \end{multichoice}
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}[连续的定义]
+    函数$f(x)$在点$p$处连续当且仅当$\lim_{x \to p} f(x) = f(p)$ (隐含着极限必
+    须存在)
+  \end{mathideabox}
+  \begin{mathideabox}[重要结论]
+    若$f(x)$在$x = 0$处连续，且$\lim_{x \to 0} \frac{f(x)}{x} = A$，则
+    \begin{align*}
+      f(0) &= 0\\
+      f'(0) &= A
+    \end{align*}
+  \end{mathideabox}
+  $f(x)$在$x = 0$处连续，则$\lim_{x \to 0} f(x)$存在且$\lim_{x \to 0} f(x) =
+  f(0)$
+
+  由$\lim_{x \to 0} \frac{f(x)}{x}$存在且分母极限为$0$可知，分子极限也为$0$，
+  即$f(0) = 0$
+
+  又
+  \[
+    f'(0) = \lim_{x \to 0} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0}
+    \frac{f(x)}{x}
+  \]
+  即$f'(0)$存在
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-12}{一元微分}
+\begin{ques}
+  设$f(x) = x^a \abs{x}$，$a$为正整数，则函数$f(x)$在点$x = 0$处(\quad)
+  \begin{multichoice}
+    \task 不存在极限
+    \task 存在极限，但不连续
+    \task 连续但不可导
+    \task \answer{可导}
+  \end{multichoice}
+\end{ques}
+\begin{solu}
+  $\lim_{x \to 0} f(x) = 0 = f(0)$，故$f(x)$在$x = 0$处连续
+  \begin{align*}
+    f'_+(0) &= \lim_{x \to 0^+} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0^+}
+    \frac{x^a \abs{x}}{x} = \matherror{\lim_{x \to 0^+} \frac{x^{a + 1}}{x} =
+    0}\\
+    f'_-(0) &= \lim_{x \to 0^-} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0^-}
+    \frac{x^a \abs{x}}{x} = \lim_{x \to 0^-} \frac{-x^{a + 1}}{x} = 0
+  \end{align*}
+  即$f'_+(0) = f'_-(0) = 0$，$f(x)$在点$x = 0$处可导，且导数为$0$.
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-12}{一元微分}
+\begin{ques}
+  若$y = f(x)$可导，则当$\Delta x \to 0$时，$\Delta y - \dd y$为$\Delta x$的
+  (\quad)
+  \begin{multichoice}
+    \task \answer{高阶无穷小}
+    \task 低阶无穷小
+    \task 同阶但不等价无穷小
+    \task 等阶无穷小
+  \end{multichoice}
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}[微分定义]
+    设函数$y = f(x)$在区间$\mathcal{I}$有定义。对于$\mathcal{I}$内的一点$x_0$，
+    当$x_0$变动到附近的$x_0 + \Delta x$（也在此区间）时，如果函数的增量$\Delta
+    y = f\qty(x_0 + \Delta x - f(x_0))$可以表示为
+    \[
+      \Delta y = A\Delta x + o(\Delta x)
+    \]
+    其中$A$是不依赖于$\Delta x$的常数，$o(\Delta x)$是比$\Delta x$高阶的无穷小，
+    则称函数$f(x)$在点$x_0$是可微的.
+
+    $A\Delta x$称作函数在点$x_0$对应与自变量增量$\Delta x$的微分，记做$\dd
+    y$，即$\dd y = A\Delta x$
+
+    把自变量$x$的增量$\Delta x$称作自变量的微分，记做$\dd x$，即$\dd x =
+    \Delta x$
+  \end{mathideabox}
+  由微分的定义可知$\Delta y - \dd y = o(\Delta x)$为$\Delta x$的高阶无穷小
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-12}{一元微分}
+\begin{ques}
+设函数
+\[
+  f(x) =
+  \begin{dcases}
+    x^3\sin \frac{1}{x}, & x \neq 0,\\
+    0, & x= 0,\\
+  \end{dcases}
+\]
+讨论$f(x)$在$x = 0$处的可导性以及$f'(x)$在$x = 0$处的连续性.
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}
+    证明$f(x)$在$x_0$处可导，即证明
+    \begin{align*}
+      f'(x_0) &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
+      = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+      \\
+      \text{或}f'(x_0) &= \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+    \end{align*}
+    存在
+    \par\vspace{1em}
+    证明$f(x)$在$x_0$处连续，即证明
+    \[
+      \lim_{x \to x_0} f(x) = f(x_0)
+    \]
+  \end{mathideabox}
+
+  \matherror{\text{当}x = 0\text{时}}，有
+  \[
+    f'(0) = \lim_{x \to 0} \frac{x^3 \sin \frac{1}{x} - 0}{x - 0} = 0,
+  \]
+  函数$f(x)$在$x = 0$处可导.
+
+  \matherror{\text{当}x \neq 0\text{时}}，有
+  \[
+    f'(x) = 3x^2 \sin \frac{1}{x} - x\cos \frac{1}{x}
+  \]
+  因为
+  \[
+    \lim_{x \to 0} f'(x) = \lim_{x \to 0} \qty(3x^2 \sin \frac{1}{x} - x\cos
+    \frac{1}{x}) = 0 = f'(0),
+  \]
+  故函数f'(x)在$x = 0$处连续
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-16}{一元微分}[最后忘记给$a$加平方]
+\begin{ques}
+已知曲线$y = x^3 - 3a^2x + b$与$x$轴相切，则$b^2$可通过$a$表示为
+$b^2=$\mathblank
+\end{ques}
+\begin{solu}
+  \answer{$4a^6$}
+
+  因为曲线$y = x^3 - 3a^2 x + b$与$x$轴相切，所以，在切点处有
+  \[
+  y' = 3x^2 - 3a^2 = 0.
+  \]
+  由此可解出切点横坐标$x = a$或$x = -a$，且在切点处有
+  \[
+    y(a) = a^3 - 3a^3 + b = 0 \qq{或} y(-a) = -a^3 + 3 a^3 + b = 0
+  \]
+  则$b = \pm 2a^3$，故$b^2 = 4a^6$
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-16}{一元微分}[没有考虑导数的分母也会跟着改变正负号]
+\begin{ques}
+设$y = \frac{x^3 + 4}{x^2}$，求函数的增减区间及极值
+\end{ques}
+\begin{solu}
+  $\matherror{y' = 1 - \frac{8}{x^3}}$，故驻点为$x = 2$，又
+  \[
+  \begin{NiceMatrix}[columns-width=2cm]
+  \toprule
+  x & (-\infty, 0) & (0, 2) & 2 & (2, +\infty)\\
+  \midrule
+  y' & + & - & 0 & + \\
+  y & \nearrow & \searrow & 3 & \nearrow\\
+  \bottomrule
+  \end{NiceMatrix}
+  \]
+  所以，$(-\infty, 0)$以及$(2, +\infty)$为增区间，$(0, 2)$为减区间，$x = 2$为
+  极小值点，极小值为$y = 3$.
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-16}{一元微分}[算到后面忘记开根号]
+\begin{ques}
+给定曲线$y = \frac{1}{x^2}$
+\begin{queslist}
+  \item 求曲线在横坐标为$x_0$的点处的切线方程
+  \item 求曲线的切线被两坐标轴所截线段的最短长度
+\end{queslist}
+\end{ques}
+\begin{solu}
+\begin{solulist}
+  \item 由$y' = -\frac{2}{x^3}$可知曲线$y = \frac{1}{x^2}$在横坐标$x_0$处的切
+    线方程为
+    \[
+      y - \frac{1}{x_0^2} = - \frac{2}{x_0^3}(x - x_0)
+    \]
+  \item 将$x = 0, y = 0$代入$x = x_0$处切线方程可得该切线在$x$轴，$y$轴上的截
+    距分别为
+    \[
+    X = \frac{3}{2}x_0 \qc Y = \frac{3}{x_0^2}.
+    \]
+    设该切线被两坐标轴所截线段长度为$L$，则$L^2 = X^2 + Y^2 = \frac{9}{4}x_0^2
+    + \frac{9}{x_0^4}.$
+
+    令$\dv{L^2}{x_0} = \frac{9}{2}x_0 - \frac{36}{x_0^5} = 0$，得驻点$x_0 =
+    \pm \sqrt{2}.$
+
+    又$\dv[2]{L^2}{x_0} = \frac{9}{2} + \frac{180}{x_0^6}$，显然$\eval{\dv[2]
+    {L^2}{x_0}}_{x_0 = \pm \sqrt{2}} > 0$，由此可知，$L^2$在$x_0 = \pm \sqrt{2}
+    $处取得极小值，即最小值，$L_{\min}^2 = \frac{27}{4}$
+
+    故$L_{\min} = \frac{3}{2}\sqrt{3}.$
+\end{solulist}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-16}{一元微分}[题目问的是最小值不是极小值]
+\begin{ques}
+  设$a > 1, f(t) = a^t - at$在$(-\infty, +\infty)$内的驻点为$t(a)$，问$a$为何
+  值时，$t(a)$最小，并求出最小值.
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}
+    先求驻点函数$t(a)$，然后再求$t(a)$的最小值和最小值点
+  \end{mathideabox}
+  令$f'(t) = a^t\ln a - a = 0$，得唯一驻点函数$t(a) = 1 - \frac{\ln\ln a}{\ln
+  a}.$
+
+  令$t'(a) = - \frac{\frac{1}{a} - \frac{1}{a}\ln \ln a}{(\ln a)^2} = 0$，得唯
+  一驻点$a = e^e.$
+
+  当$a < e^e$时，$t'(a) < 0$；当$a > e^e$时，$t'(a) > 0$，所以，$t(e^e) = 1 -
+  \frac{1}{e}$为极小值，也是最小值.
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-17}{一元微分}[没有直接两边取对数，最后没有化到最简]
+\begin{ques}
+  设$y = y(x)$由方程$x = y^y$确定，则$\dd y = $\mathblank
+\end{ques}
+\begin{solu}
+  \answer{$\frac{1}{x(1 + \ln y)}\dd x$}
+
+  两边取对数得，$\ln x = y\ln y,$
+
+  两边关于$x$求导，得$\frac{1}{x} = (1 + \ln y) y'$
+
+  则$y' = \frac{1}{x (1 + \ln y)}$
+
+  即$\dd y = y' \dd x = \frac{1}{x(1 + \ln y)}\dd x$
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-17}{一元微分}[漏抄了]
+\begin{ques}
+  设$y = e^{x^2}$，求$\dv{y}{x}, \dv{y}{(x^2)}, \dv[2]{y}{x}.$
+\end{ques}
+\begin{solu}
+  \begin{mathideabox}[区分微分符号]
+    $\dd[n]x = \qty(\dd x)^n$是“微分的幂”，$\dd (x^n) = nx^{n - 1}\dd x$是“幂
+    的微分”
+  \end{mathideabox}
+  \begin{align*}
+    \dv{y}{x} &= 2xe^{x^2},\\
+    \dv{y}{(x^2)} &= \matherror{\dv{y}{x}\cdot \dv{x}{(x^2)}} = 2xe^{x^2}\cdot
+    \frac{1}{2x} = e^{x^2},\\
+    \dv[2]{y}{x} &= 2(1 + 2x^2)e^{x^2}.
+  \end{align*}
+\end{solu}
+\end{mathques}
+
+\begin{mathques}{2020-09-17}{一元微分}[计算错误，没有化简后再求导]
+\begin{ques}
+  设$y = \ln \sqrt{\frac{1 - x}{1 + x^2}}$，求$\eval{y''}_{x = 0}.$
+\end{ques}
+\begin{solu}
+  \begin{align*}
+    y &= \matherror{\ln \sqrt{\frac{1 - x}{1 + x^2}} = \frac{1}{2} \qty(\ln (1
+    - x) - \ln(1 + x^2))},\\
+    y' &= \frac{1}{2}\qty(\frac{-1}{1 - x} - \frac{2x}{1 + x^2})
+    = - \frac{1}{2}\qty(\frac{1}{1 - x} + \frac{2x}{1 + x^2}),\\
+    y'' &= -\frac{1}{2}\qty(\frac{1}{(1 - x)^2} + 2\cdot \frac{1 - x^2}{(1 +
+    x^2)^2}),\\
+    \eval{y''}_{x = 0} &= -\frac{3}{2}.
+  \end{align*}
+\end{solu}
+\end{mathques}
 \end{document}

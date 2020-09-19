@@ -1,5 +1,5 @@
-\input{preamble.tex}
-\input{review.code.tex}
+\input preamble.tex
+\input review.code.tex
 \geometry{
   paperwidth=250.6mm,
   paperheight=174.1mm,
@@ -49,6 +49,10 @@
   #1
 }
 
+% \title{\today 测试}
+\author{}
+\date{}
+
 \ExplSyntaxOn
 \clist_new:N \g__en_info_clist
 \clist_new:N \g__en_review_point_clist
@@ -61,12 +65,20 @@
 \int_new:N \g__en_wordlist_count_int
 \int_new:N \g__en_star_word_count_int
 
-\clist_gset:Nn \g__en_review_point_clist {2,4,15,30}
+\clist_gset:Nn \g__en_review_point_clist {2,4,7,15,30}
 \int_gzero:N \g__en_wordlist_count_int
 \int_gzero:N \g__en_star_word_count_int
 
 \AtBeginDocument
   {
+    \bool_if:NTF \g__review_today_bool
+      {
+        \title{\today 复习}
+      }
+      {
+        \title{\g__review_date_tl 复习}
+      }
+    \maketitle
     \pdfbookmark[1]{目录}{toc}
     \tableofcontents
     \clearpage
@@ -270,7 +282,7 @@
           title={
               \hyperref[review_star_word:##1]{
                 \clist_item:cn
-                  { g__saved_complete_word_##1_clist }
+                  { g__saved_star_complete_word_clist }
                   { ##1 }
               }
             },
@@ -338,7 +350,7 @@
         #1
         ]
         #2
-        \item[] \vspace*{\fill}
+        % \item[] \vspace*{\fill}
       \end{enumerate}
     \end{multicols}
   } {}
@@ -400,3 +412,4 @@
   % }
 
 \ExplSyntaxOff
+\endinput

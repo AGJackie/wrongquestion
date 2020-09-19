@@ -8,6 +8,11 @@
 \usepackage{multicol}
 \usepackage{enumitem}
 \usepackage{amsmath, amssymb, bm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{extarrows}
 \usepackage{xeCJKfntef}
 \usepackage{tikz}
 \usepackage[most]{tcolorbox}
@@ -52,6 +57,9 @@
   section/format=\raggedright\bfseries\huge,
 }
 
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
 \renewcommand{\ellipsisgap}{0.1em}
 \setlength\parindent{0pt}
 
@@ -82,3 +90,4 @@
   }
 \ExplSyntaxOff
 \makeatother
+\endinput
